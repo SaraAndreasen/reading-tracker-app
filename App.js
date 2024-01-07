@@ -1,4 +1,3 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainNavigation } from "./src/navigation";
 
 export default function App() {
