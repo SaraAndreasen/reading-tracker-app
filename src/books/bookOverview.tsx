@@ -9,18 +9,21 @@ import {
   StyleSheet,
 } from "react-native";
 import axios from "axios";
+import { GlobalButton } from "../../assets/components/button";
+import { Loader } from "../../assets/components/loader";
 
 interface Book {
   key: string;
   title: string;
   cover_i?: number;
+  author_name: string;
 }
 
 export function BookSearchScreen() {
   const [query, setQuery] = useState<string>("");
   const [books, setBooks] = useState<Book[]>([]);
 
-  const searchBooks = async () => {
+  const searchBooks = async (): Promise<void> => {
     try {
       const response = await axios.get(
         `http://openlibrary.org/search.json?q=${query}`
@@ -39,21 +42,24 @@ export function BookSearchScreen() {
         value={query}
         onChangeText={(text) => setQuery(text)}
       />
-      <Button title="Search" onPress={searchBooks} />
+      <GlobalButton title="Search" onPress={searchBooks} />
       <FlatList
         data={books}
         keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
           <View style={styles.bookItem}>
-            {item.cover_i && (
+            {item.cover_i ? (
               <Image
                 style={styles.bookCover}
                 source={{
                   uri: `http://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg`,
                 }}
               />
+            ) : (
+              <Loader size={20} color="#3498db" />
             )}
             <Text>{item.title}</Text>
+            <Text>{item.author_name}</Text>
           </View>
         )}
       />
