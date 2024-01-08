@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { MyBooks } from "./books/MyBooks";
 import { MyGoals } from "./goals/Goals";
 import { MyStats } from "./stats/Stats";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { BookSearchScreen } from "../books/bookOverview";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,7 @@ export function MainNavigation() {
       >
         <Tab.Screen
           name="Books"
-          component={MyBooks}
+          component={BookSearchScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name={"book"} size={size} color={color} />
