@@ -29,14 +29,14 @@ export function GlobalButton({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#3498db",
+    backgroundColor: "#EBDF73",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
     alignItems: "center",
   },
   text: {
-    color: "#fff",
+    color: "#33311A",
     fontSize: 16,
   },
 });
